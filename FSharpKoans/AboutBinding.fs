@@ -60,21 +60,21 @@ module ``02: About Binding`` =
     [<Test>]
     let ``01 Basic 'let' binding`` () = 
         let x = 50 in // note that the syntax is more explicit about what's really going on!
-            x |> should equal __
+            x |> should equal 50
 
     [<Test>]
     let ``02 Equivalent basic 'let' binding`` () = // this is exactly equivalent to the previous binding.
         let x = 50
-        x |> should equal __
+        x |> should equal 50
 
     [<Test>]
     let ``03 There are many types of values`` () =
-        let a = __
-        let b = __
-        let c = __
-        let d = __
-        let e = __
-        let f = __
+        let a = 2
+        let b = 2.0
+        let c = true
+        let d = "Jono"
+        let e = 'a'
+        let f = ()
         a |> should be ofType<int>
         b |> should be ofType<float>
         c |> should be ofType<bool>
@@ -93,7 +93,7 @@ module ``02: About Binding`` =
 
     [<Test>]
     let ``05 There's a `not` function instead of a `not` operator`` () =
-        __ true |> should equal false
+         true |> should equal false
 
     [<Test>]
     let ``06 Nest your 'let' statements as deeply as you'd like`` () =
