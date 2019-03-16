@@ -93,7 +93,7 @@ module ``02: About Binding`` =
 
     [<Test>]
     let ``05 There's a `not` function instead of a `not` operator`` () =
-         true |> should equal false
+        __ true |> should equal false
 
     [<Test>]
     let ``06 Nest your 'let' statements as deeply as you'd like`` () =
