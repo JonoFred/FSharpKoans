@@ -48,7 +48,7 @@ module ``03: Putting the Function into Functional Programming`` =
             let k = "swash" // notice the indentation.
             let b = "buckle" // F# is whitespace-sensitive, so it is important!
             zorro + " likes to " + k + b
-        ) "Zorro the pirate" |> should equal __
+        ) "Zorro the pirate" |> should equal "Zorro the pirate likes to swash buckle"
 
     [<Test>]
     let ``08 A function can span multiple lines (Part 2).`` () =
@@ -79,28 +79,27 @@ module ``03: Putting the Function into Functional Programming`` =
         // read the above as: fun love -> (fun hate -> (love - hate))
         let j = i 10
         let k = j 9
-        k |> should equal 9
+        k |> should equal 1
 
     [<Test>]
     let ``11 A function can return a function (Part 2).`` () =
         let funky a b = a + b
         let j = funky 10
         let k = j 9
-        k |> should equal __
-
+        k |> should equal 19
     [<Test>]
     let ``12 You can write a function as a one-liner (Part 1).`` () =
-        (fun ___ -> fun ___ -> __ * __) __ __ |> should equal 27
+        (fun a -> fun b -> a * b) 3 9 |> should equal 27
 
     [<Test>]
     let ``13 You can write a function as a one-liner (Part 2).`` () =
-        (fun _____ ____ -> __ + __) __ __ |> should equal 17
+        (fun a b -> a + b) 10 7 |> should equal 17
 
     [<Test>]
     let ``14 'Multiple-argument' functions are one-input, one-output in disguise`` () =
       let i j k = j * k
-      let j = __ 4
-      let k = __ 12
+      let j = i 4
+      let k = j 12
       k |> should equal 48
 
     [<Test>]
@@ -108,7 +107,7 @@ module ``03: Putting the Function into Functional Programming`` =
         let f a =
             failwith "An exception will be thrown as soon as this is executed."
             a + 2
-        ___ |> should be ofType<int -> int>
+        f |> should be ofType<int -> int>
 
     [<Test>]
     let ``16 A function is executed when it is called, NOT when it is defined or referenced (Part 2).`` () =
@@ -116,14 +115,14 @@ module ``03: Putting the Function into Functional Programming`` =
             let f a =
                 failwith "An exception will be thrown as soon as this is executed."
                 a + 2
-            FILL_ME__IN |> should equal 1234
+            f |> should equal 1234
         ) |> should throw typeof<System.Exception>
 
     [<Test>]
     let ``17 Two names can be bound to the same value`` () =
         let f x = x + 2
         let y = f
-        y 20 |> should equal ___
+        y 20 |> should equal 22
 
 
     [<Test>]
