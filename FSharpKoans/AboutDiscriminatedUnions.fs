@@ -41,17 +41,17 @@ module ``08: The Good Kind of Discrimination`` =
     let ``02 Creating & pattern-matching a discriminated union`` () = 
         let randomOpinion degree =
             match degree with
-            | BSc (_, ComputerScience) | BSc (ComputerScience, _) -> "Good choice!"
-            | BSc _ -> "!!SCIENCE!!"
+            | BSc (Mathematics, ComputerScience) | BSc (ComputerScience, Mathematics) -> "Good choice!"
+            | BSc (ComputerScience, ComputerScience) -> "!!SCIENCE!!"
             | BPharm -> "Meh, it's OK."
-            | _ -> "Money, money, money."
-            | FILL_ME_IN -> "A thinker, eh?"
-        randomOpinion __ |> should equal "Good choice!"
-        randomOpinion __ |> should equal "!!SCIENCE!!"
+            | BCom (Management, Economics) -> "Money, money, money."
+            | BA (Linguistics, Philosophy) -> "A thinker, eh?"
+        randomOpinion (BSc (Mathematics, ComputerScience)) |> should equal "Good choice!"
+        randomOpinion (BSc (ComputerScience, ComputerScience)) |> should equal "!!SCIENCE!!"
         randomOpinion (BCom (Management, Economics)) |> should equal "Money, money, money."
         randomOpinion (BCom (Linguistics, Management)) |> should equal "Money, money, money."
         randomOpinion (BA (Linguistics, Philosophy)) |> should equal "A thinker, eh?"
-        randomOpinion __ |> should equal "Meh, it's OK."
+        randomOpinion BPharm |> should equal "Meh, it's OK."
 
     type EquipmentStatus =
     | Available
@@ -60,8 +60,8 @@ module ``08: The Good Kind of Discrimination`` =
 
     [<Test>]
     let ``03 A discriminated union case with associated data is a function`` () =
-        Broken |> should be ofType<int>
-        Rented |> should be ofType<EquipmentStatus>
+        Broken |> should be ofType<int -> EquipmentStatus>
+        Rented |> should be ofType<string -> EquipmentStatus>
 
     type BinaryTree =
     | Empty

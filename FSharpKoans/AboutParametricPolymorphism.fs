@@ -93,10 +93,11 @@ module ``10: Parametric polymorphism`` =
     }
     // we might create this with: { Something=5; Blah=8; Otherwise=9.3; What=77,"hi",0.88 }
 
-    type MyRecord<'a, 'b> = {
-        Who : 'a // <-- should be generic
-        What : 'b // <-- should be generic, and a different type to Who
+    type MyRecord = {
+        Who : string  // <-- should be generic
+        What : int  // <-- should be generic, and a different type to Who
         Where : string
+
     }
 
     [<Test>]

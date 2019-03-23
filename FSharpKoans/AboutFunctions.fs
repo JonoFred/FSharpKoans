@@ -145,8 +145,8 @@ module ``03: Putting the Function into Functional Programming`` =
     let ``20 Functions have types`` () =
         let a x y = x + "cabbage" + y
         let b r = 50.0 / r
-        a |> should be ofType<string>
-        b |> should be ofType<float>
+        a |> should be ofType<string -> string -> string>
+        b |> should be ofType<float -> float>
 
 
     [<Test>]
