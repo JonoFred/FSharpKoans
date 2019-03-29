@@ -58,7 +58,7 @@ module ``11: Exploring types, options, and results`` =
     [<Test>]
     let ``03 Basic Option example`` () =
         getSurname "Taylor Swift" |> should equal "Swift"
-        getSurname "Eminem" |> should equal null
+        getSurname "Eminem" |> should equal ""
 
     // the System.Int32.TryParse, System.Double.TryParse, etc functions return
     // a tuple of bool * XYZ, where XYZ is the converted value.
