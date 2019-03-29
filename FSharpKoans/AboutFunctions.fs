@@ -48,7 +48,7 @@ module ``03: Putting the Function into Functional Programming`` =
             let k = "swash" // notice the indentation.
             let b = "buckle" // F# is whitespace-sensitive, so it is important!
             zorro + " likes to " + k + b
-        ) "Zorro the pirate" |> should equal "Zorro the pirate likes to swash buckle"
+        ) "Zorro the pirate" |> should equal "Zorro the pirate likes to swashbuckle"
 
     [<Test>]
     let ``08 A function can span multiple lines (Part 2).`` () =
@@ -223,8 +223,8 @@ module ``03: Putting the Function into Functional Programming`` =
     let ``24 The output type of one pipe must be the input type to the next`` () =
         let a x = x * 2.5
         let b x = x = 7.5
-        a |> should be ofType<float>
-        b |> should be ofType<bool>
+        a |> should be ofType<float -> float>
+        b |> should be ofType<float -> bool>
         __ |> __ |> __ |> should equal true
 
     (*
